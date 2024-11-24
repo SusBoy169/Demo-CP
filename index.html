@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenplates</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <!--<div class="loading-icon"></div>-->
+        <img id="logo" src="logo.png">
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="hidden">
+        <!-- Navigation Section -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <a class="navbar-brand" href="#">Greenplates</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button class="nav-link btn btn-success" onclick="navigateTo('home')">Home</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link btn btn-success" onclick="navigateTo('dashboard')">Dashboard</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <h1>Welcome to the Greenplates</h1>
+            <marquee id="marquee-quote" class="text-muted">“Food waste is a major issue, and we must act now.”</marquee>
+            <form id="student-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="class">Class:</label>
+                    <input type="text" class="form-control" id="class" required>
+                </div>
+                <div class="form-group">
+                    <label for="id">Student ID:</label>
+                    <input type="text" class="form-control" id="id" required>
+                </div>
+                <div class="form-group">
+                    <label for="section">Section:</label>
+                    <input type="text" class="form-control" id="section" required>
+                </div>
+                <div class="form-group">
+                    <label for="total-food">Total Food Served (grams):</label>
+                    <input type="number" class="form-control" id="total-food" required>
+                </div>
+                <div class="form-group">
+                    <label for="food-waste">Food Waste (grams):</label>
+                    <input type="number" class="form-control" id="food-waste" required>
+                </div>
+                <button type="submit" class="btn btn-danger">Save Details</button>
+            </form>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section hidden">
+            <h1>Leaderboard</h1>
+            <p class="dashboard-message">Thank you to those who wasted less food, you’re doing great! For those with higher waste, let’s try to reduce it and help the planet!</p>
+            
+            <!-- Top Filters (for more/less food waste) -->
+            <div class="leaderboard-buttons">
+                <button class="leaderboard-button" onclick="filterLeaderboard(10)">Top 10</button>
+                <button class="leaderboard-button" onclick="filterLeaderboard(20)">Top 20</button>
+                <button class="leaderboard-button" onclick="filterLeaderboard(30)">Top 30</button>
+                <button class="leaderboard-button" onclick="filterLeaderboard('all')">Show All</button>
+            </div>
+
+            <div class="leaderboard">
+                <!-- Left side for less food waste -->
+                <div class="leaderboard-left">
+                    <h3>Less Food Wasted</h3>
+                    <div id="leaderboard-left-cards" class="card-container">
+                        <!-- Cards will be dynamically added here -->
+                    </div>
+                </div>
+
+                <!-- Right side for more food waste -->
+                <div class="leaderboard-right">
+                    <h3>More Food Wasted</h3>
+                    <div id="leaderboard-right-cards" class="card-container">
+                        <!-- Cards will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Greenplates. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
